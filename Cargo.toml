@@ -1,0 +1,10 @@
+[package]
+authors = ["Vladimir Lushnikov <vladimir@solidninja.is>"]
+description = "Rust wrapper for calling pinentry to get secure password input"
+homepage = "https://gitlab.com/solidninja/pinentry-rs"
+license = "LGPL-3.0"
+name = "pinentry-rs"
+version = "0.1.0"
+
+[dependencies]
+secstr = "0.3.0"
