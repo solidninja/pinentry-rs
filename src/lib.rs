@@ -19,7 +19,7 @@
 //! ```
 
 #![deny(warnings)]
-#[warn(unused_must_use)]
+#![warn(unused_must_use)]
 extern crate secstr;
 
 /// Assuan protocol used by pinentry

@@ -1,0 +1,31 @@
+stages:
+  - build
+
+variables:
+  CARGO_HOME: $CI_PROJECT_DIR/cargo
+  APT_CACHE_DIR: $CI_PROJECT_DIR/apt
+
+before_script:
+  - apt-get update -yq
+  - apt-get install -o dir::cache::archives="$APT_CACHE_DIR" -y pinentry-tty
+
+.build-steps: &build-steps
+  - cargo build --all-targets --verbose
+  - cargo test --all --verbose
+
+rust-latest:
+  stage: build
+  image: rust:latest
+  script: *build-steps
+
+rust-nightly:
+  stage: build
+  image: rustlang/rust:nightly
+  script: *build-steps
+  allow_failure: true
+
+cache:
+  paths:
+    - apt/
+    - cargo/
+    - target/
