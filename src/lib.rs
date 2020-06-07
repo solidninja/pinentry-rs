@@ -32,6 +32,8 @@ use std::io;
 use std::io::{BufRead, BufReader};
 use std::process::{Child, Command, Stdio};
 use std::result;
+use std::fmt::{Display, Formatter};
+use std::error;
 
 use secstr::SecStr;
 
@@ -51,6 +53,24 @@ pub enum Error {
 impl From<io::Error> for Error {
     fn from(e: io::Error) -> Self {
         Error::IoError(e)
+    }
+}
+
+impl Display for Error {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Error::IoError(ref cause) => write!(f, "Pinentry I/O error: {}", cause),
+            Error::ProtocolError(ref cause) => write!(f, "A pinentry protocol error has occurred: {}", cause),
+        }
+    }
+}
+
+impl error::Error for Error {
+    fn source(&self) -> Option<&(dyn error::Error + 'static)> {
+        match self {
+            Error::IoError(ref cause) => Some(cause),
+            _ => None
+        }
     }
 }
 
