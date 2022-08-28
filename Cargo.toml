@@ -4,8 +4,12 @@ description = "Rust wrapper for calling pinentry to get secure password input"
 homepage = "https://gitlab.com/solidninja/pinentry-rs"
 license = "LGPL-3.0"
 name = "pinentry-rs"
-version = "0.1.2"
-edition = "2018"
+readme = "README.md"
+version = "0.2.0"
+edition = "2021"
+
+[badges]
+gitlab = { repository = "solidninja/pinentry-rs" }
 
 [dependencies]
-secstr = "0.4.0"
+secstr = "0.5.0"
