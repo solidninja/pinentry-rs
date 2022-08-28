@@ -1,3 +1,4 @@
+[![pipeline status](https://gitlab.com/solidninja/pinentry-rs/badges/main/pipeline.svg)](https://gitlab.com/solidninja/pinentry-rs/commits/main)
 [![crates.io Status](https://img.shields.io/crates/v/pinentry-rs.svg)](https://crates.io/crates/pinentry-rs)
 [![docs.rs build](https://docs.rs/pinentry-rs/badge.svg)](https://docs.rs/crate/pinentry-rs/)
 

@@ -137,9 +137,11 @@ pub fn process_commands<'a, W: Write, R: BufRead, I: Iterator<Item = &'a AssuanC
                     return Ok(AssuanResponse::NOTOK(trim_newl(line)));
                 }
             }
-            _ => if !read_line_is_ok(reader, &mut line)? {
-                return Ok(AssuanResponse::NOTOK(trim_newl(line)));
-            },
+            _ => {
+                if !read_line_is_ok(reader, &mut line)? {
+                    return Ok(AssuanResponse::NOTOK(trim_newl(line)));
+                }
+            }
         }
     }
 

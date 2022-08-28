@@ -2,8 +2,8 @@
 #[warn(unused_must_use)]
 extern crate pinentry_rs;
 
-use std::str;
 use pinentry_rs::pinentry;
+use std::str;
 
 fn main() {
     let pin = pinentry()

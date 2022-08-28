@@ -27,13 +27,13 @@ extern crate secstr;
 /// _Note_ the module is deliberately left private currently
 mod assuan;
 
+use std::error;
 use std::ffi::OsStr;
+use std::fmt::{Display, Formatter};
 use std::io;
 use std::io::{BufRead, BufReader};
 use std::process::{Child, Command, Stdio};
 use std::result;
-use std::fmt::{Display, Formatter};
-use std::error;
 
 use secstr::SecStr;
 
@@ -69,7 +69,7 @@ impl error::Error for Error {
     fn source(&self) -> Option<&(dyn error::Error + 'static)> {
         match self {
             Error::IoError(ref cause) => Some(cause),
-            _ => None
+            _ => None,
         }
     }
 }
